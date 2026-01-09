@@ -52,9 +52,8 @@ export function CreateShortLinkModal({ isOpen, onClose, linkData }: CreateShortL
   const [success, setSuccess] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const baseUrl = typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.host}`
-    : ''
+  // Domínio fixo do encurtador
+  const shortenerDomain = 'https://go.lendario.ai'
 
   useEffect(() => {
     if (isOpen && linkData) {
@@ -102,7 +101,7 @@ export function CreateShortLinkModal({ isOpen, onClose, linkData }: CreateShortL
   }
 
   const handleCopy = async () => {
-    const shortUrl = `${baseUrl}/go/${slug}`
+    const shortUrl = `${shortenerDomain}/${slug}`
     await navigator.clipboard.writeText(shortUrl)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
@@ -171,7 +170,7 @@ export function CreateShortLinkModal({ isOpen, onClose, linkData }: CreateShortL
             <div className="mb-4 p-3 rounded-xl bg-light-bg dark:bg-dark-bg">
               <div className="text-xs text-light-muted dark:text-dark-muted mb-1">Link final:</div>
               <code className="text-sm break-all">
-                {baseUrl}/go/<span className="text-green-400 font-bold">{slug || '...'}</span>
+                {shortenerDomain}/<span className="text-green-400 font-bold">{slug || '...'}</span>
               </code>
             </div>
 

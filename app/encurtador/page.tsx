@@ -42,9 +42,8 @@ export default function EncurtadorPage() {
   const [error, setError] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
 
-  const baseUrl = typeof window !== 'undefined'
-    ? `${window.location.protocol}//${window.location.host}`
-    : ''
+  // Domínio fixo do encurtador
+  const shortenerDomain = 'https://go.lendario.ai'
 
   const fetchLinks = async () => {
     try {
@@ -126,7 +125,7 @@ export default function EncurtadorPage() {
         <div className="space-y-3">
           {links.map((link) => {
             const dest = getDestinationInfo(link.url)
-            const shortUrl = `${baseUrl}/go/${link.slug}`
+            const shortUrl = `${shortenerDomain}/${link.slug}`
 
             return (
               <div
