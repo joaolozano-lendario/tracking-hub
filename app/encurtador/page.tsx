@@ -42,6 +42,14 @@ export default function EncurtadorPage() {
   const [error, setError] = useState<string | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
 
+  // Form manual
+  const [manualUrl, setManualUrl] = useState('')
+  const [manualSlug, setManualSlug] = useState('')
+  const [manualName, setManualName] = useState('')
+  const [creating, setCreating] = useState(false)
+  const [createError, setCreateError] = useState<string | null>(null)
+  const [createSuccess, setCreateSuccess] = useState(false)
+
   // Domínio fixo do encurtador
   const shortenerDomain = 'https://go.lendario.ai'
 
@@ -81,20 +89,134 @@ export default function EncurtadorPage() {
     }
   }
 
+  const handleCreateManual = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!manualUrl || !manualSlug) return
+
+    setCreating(true)
+    setCreateError(null)
+    setCreateSuccess(false)
+
+    try {
+      const res = await fetch('/api/shortlinks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slug: manualSlug,
+          url: manualUrl,
+          destination: manualName || 'Link externo',
+          source: 'manual',
+          medium: 'link',
+          campaign: 'externo',
+        }),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        setCreateError(data.error || 'Erro ao criar')
+        return
+      }
+
+      setCreateSuccess(true)
+      setManualUrl('')
+      setManualSlug('')
+      setManualName('')
+      fetchLinks()
+
+      setTimeout(() => setCreateSuccess(false), 3000)
+    } catch (err) {
+      console.error('Erro:', err)
+      setCreateError('Erro de conexão')
+    } finally {
+      setCreating(false)
+    }
+  }
+
   return (
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-bold mb-2">Encurtador de Links</h1>
         <p className="text-light-muted dark:text-dark-muted">
-          Links curtos para compartilhar. Use <code className="bg-light-border dark:bg-dark-border px-1 rounded">go.academialendaria.ai/slug</code>
+          Links curtos para compartilhar. Use <code className="bg-light-border dark:bg-dark-border px-1 rounded">go.lendario.ai/slug</code>
         </p>
       </div>
 
-      {/* Info box */}
-      <div className="mb-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20">
-        <p className="text-sm">
-          <strong>Como criar:</strong> Gere um link UTM no Gerador, depois clique em &quot;Criar Link Curto&quot;.
-        </p>
+      {/* Criar link manual */}
+      <div className="mb-6 p-5 rounded-xl border border-light-border dark:border-dark-border bg-light-card dark:bg-dark-card">
+        <h2 className="font-semibold mb-4">Encurtar qualquer link</h2>
+        <form onSubmit={handleCreateManual} className="space-y-3">
+          <div>
+            <label className="block text-xs font-medium text-light-muted dark:text-dark-muted mb-1">
+              URL de destino *
+            </label>
+            <input
+              type="url"
+              value={manualUrl}
+              onChange={(e) => setManualUrl(e.target.value)}
+              placeholder="https://exemplo.com/pagina-longa"
+              className="w-full px-4 py-2.5 rounded-lg bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border focus:outline-none"
+              required
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-medium text-light-muted dark:text-dark-muted mb-1">
+                Slug *
+              </label>
+              <input
+                type="text"
+                value={manualSlug}
+                onChange={(e) => setManualSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ''))}
+                placeholder="meu-link"
+                className="w-full px-4 py-2.5 rounded-lg bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border focus:outline-none"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-light-muted dark:text-dark-muted mb-1">
+                Nome (opcional)
+              </label>
+              <input
+                type="text"
+                value={manualName}
+                onChange={(e) => setManualName(e.target.value)}
+                placeholder="Ex: Live Janeiro"
+                className="w-full px-4 py-2.5 rounded-lg bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border focus:outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Preview */}
+          {manualSlug && (
+            <div className="text-sm text-light-muted dark:text-dark-muted">
+              Link: <code className="text-green-400">{shortenerDomain}/{manualSlug}</code>
+            </div>
+          )}
+
+          {createError && (
+            <div className="text-sm text-red-400">{createError}</div>
+          )}
+
+          {createSuccess && (
+            <div className="text-sm text-green-400">Link criado com sucesso!</div>
+          )}
+
+          <button
+            type="submit"
+            disabled={creating || !manualUrl || !manualSlug}
+            className="w-full px-4 py-2.5 rounded-lg bg-accent text-accent-contrast font-medium hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {creating ? 'Criando...' : 'Criar Link Curto'}
+          </button>
+        </form>
+      </div>
+
+      {/* Separador */}
+      <div className="mb-6 flex items-center gap-3">
+        <div className="flex-1 h-px bg-light-border dark:bg-dark-border" />
+        <span className="text-xs text-light-muted dark:text-dark-muted">Links criados</span>
+        <div className="flex-1 h-px bg-light-border dark:bg-dark-border" />
       </div>
 
       {/* Error state */}
@@ -162,7 +284,7 @@ export default function EncurtadorPage() {
                 <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 mb-3">
                   <div className="flex items-center justify-between">
                     <code className="text-sm font-semibold text-green-400">
-                      /go/{link.slug}
+                      go.lendario.ai/{link.slug}
                     </code>
                     <a
                       href={shortUrl}
