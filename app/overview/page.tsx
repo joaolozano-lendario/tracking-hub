@@ -237,11 +237,11 @@ export default function OverviewPage() {
           </div>
           <div>
             <span className="text-light-muted dark:text-dark-muted">From Email:</span>
-            <p className="font-mono">alan@academialendaria.ai</p>
+            <p className="font-mono">contato@academialendaria.ai</p>
           </div>
           <div>
             <span className="text-light-muted dark:text-dark-muted">Reply-to:</span>
-            <p className="font-mono">alan@academialendaria.ai</p>
+            <p className="font-mono">contato@academialendaria.ai</p>
           </div>
         </div>
       </div>
