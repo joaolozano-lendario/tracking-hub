@@ -4,6 +4,7 @@ const MAX_HISTORY = 20
 export interface HistoryItem {
   id: string
   url: string
+  baseUrl: string
   source: string
   medium: string
   campaign: string

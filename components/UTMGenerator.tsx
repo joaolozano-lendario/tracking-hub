@@ -80,6 +80,7 @@ export function UTMGenerator() {
     if (!generatedUrl) return
     addToHistory({
       url: generatedUrl,
+      baseUrl: finalUrl,
       source: finalSource,
       medium: finalMedium,
       campaign: finalCampaign,
