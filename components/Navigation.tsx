@@ -53,7 +53,7 @@ export function Navigation() {
                   href={item.href}
                   className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors
                     ${isActive
-                      ? 'bg-accent/10 text-accent'
+                      ? 'bg-light-text/10 dark:bg-dark-text/10 text-light-text dark:text-dark-text'
                       : 'text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-card dark:hover:bg-dark-card'
                     }`}
                 >
