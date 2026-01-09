@@ -2,20 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Academia Lendár[IA] Design System - Monocromático */
 :root {
-  --bg: #f8f8f8;
-  --card: #ffffff;
-  --border: #e5e5e5;
-  --text: #171717;
-  --muted: #737373;
+  --bg: #F8F8F8;
+  --card: #FFFFFF;
+  --border: #E8E8E8;
+  --text: #000000;
+  --muted: #646464;
 }
 
 .dark {
-  --bg: #0a0a0a;
+  --bg: #000000;
   --card: #161616;
-  --border: #262626;
-  --text: #f5f5f5;
-  --muted: #a3a3a3;
+  --border: #323232;
+  --text: #FFFFFF;
+  --muted: #888888;
 }
 
 body {
@@ -43,15 +44,23 @@ body {
   background: var(--muted);
 }
 
-/* Selection */
+/* Selection - Monocromático */
 ::selection {
-  background-color: rgba(59, 130, 246, 0.3);
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
-/* Focus styles */
+.dark ::selection {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Focus styles - Monocromático */
 *:focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid #000000;
   outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+  outline: 2px solid #FFFFFF;
 }
 
 /* Card hover effect */
