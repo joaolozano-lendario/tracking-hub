@@ -9,6 +9,8 @@
   --border: #E8E8E8;
   --text: #000000;
   --muted: #646464;
+  --accent: #000000;
+  --accent-contrast: #FFFFFF;
 }
 
 .dark {
@@ -17,6 +19,8 @@
   --border: #323232;
   --text: #FFFFFF;
   --muted: #888888;
+  --accent: #FFFFFF;
+  --accent-contrast: #000000;
 }
 
 body {
@@ -65,5 +69,9 @@ body {
 
 /* Card hover effect */
 .card-hover {
-  @apply transition-all duration-200 hover:border-accent/50 hover:shadow-lg hover:shadow-accent/5;
+  transition: all 0.2s;
+}
+.card-hover:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }

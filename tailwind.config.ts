@@ -24,9 +24,11 @@ const config: Config = {
           text: '#000000',
           muted: '#646464',
         },
+        // Accent usa CSS variable - preto em light, branco em dark
         accent: {
-          DEFAULT: '#000000',
-          hover: '#242424',
+          DEFAULT: 'var(--accent)',
+          hover: 'var(--accent)',
+          contrast: 'var(--accent-contrast)',
         }
       },
       fontFamily: {

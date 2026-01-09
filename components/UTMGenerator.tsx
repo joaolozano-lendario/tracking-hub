@@ -98,7 +98,7 @@ export function UTMGenerator() {
       {/* STEP 1: Destino */}
       <div className="bg-light-card dark:bg-dark-card rounded-2xl p-5 border border-light-border dark:border-dark-border">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">
+          <div className="w-8 h-8 rounded-full bg-accent text-accent-contrast flex items-center justify-center font-bold text-sm">
             1
           </div>
           <div>
@@ -149,7 +149,7 @@ export function UTMGenerator() {
       {/* STEP 2: Source */}
       <div className={`bg-light-card dark:bg-dark-card rounded-2xl p-5 border border-light-border dark:border-dark-border transition-opacity ${!finalUrl ? 'opacity-50 pointer-events-none' : ''}`}>
         <div className="flex items-center gap-3 mb-4">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalUrl ? 'bg-accent text-white' : 'bg-light-border dark:bg-dark-border'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalUrl ? 'bg-accent text-accent-contrast' : 'bg-light-border dark:bg-dark-border'}`}>
             2
           </div>
           <div>
@@ -215,7 +215,7 @@ export function UTMGenerator() {
       {/* STEP 3: Medium */}
       <div className={`bg-light-card dark:bg-dark-card rounded-2xl p-5 border border-light-border dark:border-dark-border transition-opacity ${!finalSource ? 'opacity-50 pointer-events-none' : ''}`}>
         <div className="flex items-center gap-3 mb-4">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalSource ? 'bg-accent text-white' : 'bg-light-border dark:bg-dark-border'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalSource ? 'bg-accent text-accent-contrast' : 'bg-light-border dark:bg-dark-border'}`}>
             3
           </div>
           <div>
@@ -265,7 +265,7 @@ export function UTMGenerator() {
       {/* STEP 4: Campaign */}
       <div className={`bg-light-card dark:bg-dark-card rounded-2xl p-5 border border-light-border dark:border-dark-border transition-opacity ${!finalMedium ? 'opacity-50 pointer-events-none' : ''}`}>
         <div className="flex items-center gap-3 mb-4">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalMedium ? 'bg-accent text-white' : 'bg-light-border dark:bg-dark-border'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${finalMedium ? 'bg-accent text-accent-contrast' : 'bg-light-border dark:bg-dark-border'}`}>
             4
           </div>
           <div>
@@ -416,7 +416,7 @@ export function UTMGenerator() {
               className={`flex-1 sm:flex-none px-6 py-3 rounded-xl font-semibold transition-all ${
                 copied
                   ? 'bg-green-500 text-white'
-                  : 'bg-accent text-white hover:bg-accent-hover'
+                  : 'bg-accent text-accent-contrast hover:bg-accent-hover'
               }`}
             >
               {copied ? '✓ Copiado!' : '📋 Copiar Link'}
