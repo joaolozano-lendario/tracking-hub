@@ -11,6 +11,7 @@ import { buildUTMUrl } from '@/lib/utm-builder'
 import { addToHistory } from '@/lib/storage'
 import { CopyButton } from './CopyButton'
 import { QRCodeDisplay } from './QRCodeDisplay'
+import { CreateShortLinkModal } from './CreateShortLinkModal'
 
 export function UTMGenerator() {
   // Form state
@@ -32,6 +33,7 @@ export function UTMGenerator() {
   const [showQR, setShowQR] = useState(false)
   const [copied, setCopied] = useState(false)
   const [saved, setSaved] = useState(false)
+  const [showShortLinkModal, setShowShortLinkModal] = useState(false)
 
   // Get final values
   const finalUrl = baseUrl === 'custom' ? customUrl : baseUrl
@@ -424,6 +426,13 @@ export function UTMGenerator() {
             </button>
 
             <button
+              onClick={() => setShowShortLinkModal(true)}
+              className="px-4 py-3 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30 hover:bg-purple-500/30 transition-all font-medium"
+            >
+              ✂️ Link Curto
+            </button>
+
+            <button
               onClick={() => setShowQR(!showQR)}
               className="px-4 py-3 rounded-xl bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border hover:border-accent transition-all"
             >
@@ -457,6 +466,21 @@ export function UTMGenerator() {
           <p className="text-sm">O link será gerado automaticamente</p>
         </div>
       )}
+
+      {/* Short Link Modal */}
+      <CreateShortLinkModal
+        isOpen={showShortLinkModal}
+        onClose={() => setShowShortLinkModal(false)}
+        linkData={{
+          url: generatedUrl,
+          baseUrl: finalUrl,
+          source: finalSource,
+          medium: finalMedium,
+          campaign: finalCampaign,
+          content: finalContent || undefined,
+          term: finalTerm || undefined,
+        }}
+      />
     </div>
   )
 }
