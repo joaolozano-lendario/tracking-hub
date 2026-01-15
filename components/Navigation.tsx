@@ -23,8 +23,10 @@ function LogoDiamante({ className = "w-6 h-6" }: { className?: string }) {
 
 const navItems = [
   { href: '/', label: 'Gerador', icon: '🔗', mobileLabel: '🔗' },
+  { href: '/sobre', label: 'O que é?', icon: '📖', mobileLabel: '📖' },
+  { href: '/audit', label: 'Audit', icon: '🔍', mobileLabel: '🔍' },
   { href: '/encurtador', label: 'Encurtador', icon: '✂️', mobileLabel: '✂️' },
-  { href: '/overview', label: 'Overview', icon: '📊', mobileLabel: '📊' },
+  { href: '/overview', label: 'Iscas', icon: '📊', mobileLabel: '📊' },
   { href: '/tags', label: 'Tags', icon: '🏷️', mobileLabel: '🏷️' },
   { href: '/listas', label: 'Listas', icon: '📋', mobileLabel: '📋' },
   { href: '/links', label: 'Histórico', icon: '⚡', mobileLabel: '⚡' },

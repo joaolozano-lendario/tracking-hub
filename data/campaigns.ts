@@ -97,6 +97,54 @@ export const campaignCategories: CampaignCategory[] = [
       { value: 'charao-remarketing', label: 'Charão - Remarketing', category: 'operador' },
     ]
   },
+  {
+    id: 'lives',
+    label: 'Lives/Eventos',
+    campaigns: [
+      { value: 'live-imersao-jan26', label: 'Imersão Jan/26', category: 'lives' },
+      { value: 'live-hackathon-jan26', label: 'Hackathon Jan/26', category: 'lives' },
+      { value: 'live-workshop-ia', label: 'Workshop IA', category: 'lives' },
+      { value: 'live-qa-semanal', label: 'Q&A Semanal', category: 'lives' },
+      { value: 'live-lancamento-imersao', label: 'Lançamento Imersão', category: 'lives' },
+    ]
+  },
+  {
+    id: 'lives-semanais',
+    label: '📺 Lives Semanais',
+    campaigns: [
+      { value: 'livesemanal049', label: 'Live #049', category: 'lives-semanais' },
+      { value: 'livesemanal050', label: 'Live #050', category: 'lives-semanais' },
+      { value: 'livesemanal051', label: 'Live #051', category: 'lives-semanais' },
+      { value: 'livesemanal052', label: 'Live #052', category: 'lives-semanais' },
+      { value: 'livesemanal053', label: 'Live #053', category: 'lives-semanais' },
+      { value: 'livesemanal054', label: 'Live #054', category: 'lives-semanais' },
+      { value: 'livesemanal055', label: 'Live #055', category: 'lives-semanais' },
+    ]
+  },
+  {
+    id: 'manychat',
+    label: 'Fluxos ManyChat',
+    campaigns: [
+      { value: 'mc-boas-vindas', label: 'Boas-vindas', category: 'manychat' },
+      { value: 'mc-isca-calc', label: 'Isca Calculadora', category: 'manychat' },
+      { value: 'mc-isca-quiz', label: 'Isca Quiz', category: 'manychat' },
+      { value: 'mc-isca-paradoxo', label: 'Isca Paradoxo', category: 'manychat' },
+      { value: 'mc-isca-guia', label: 'Isca Guia', category: 'manychat' },
+      { value: 'mc-nurture', label: 'Nurture ManyChat', category: 'manychat' },
+      { value: 'mc-venda', label: 'Sequência Venda', category: 'manychat' },
+    ]
+  },
+  {
+    id: 'organico',
+    label: 'Conteúdo Orgânico',
+    campaigns: [
+      { value: 'org-educativo', label: 'Conteúdo Educativo', category: 'organico' },
+      { value: 'org-case', label: 'Case/Depoimento', category: 'organico' },
+      { value: 'org-behind-scenes', label: 'Behind the Scenes', category: 'organico' },
+      { value: 'org-tips', label: 'Dicas Rápidas', category: 'organico' },
+      { value: 'org-trend', label: 'Trend/Viral', category: 'organico' },
+    ]
+  },
 ]
 
 export function getAllCampaigns(): CampaignOption[] {

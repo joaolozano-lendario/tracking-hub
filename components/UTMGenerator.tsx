@@ -161,14 +161,14 @@ export function UTMGenerator() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          {sourceCategories.slice(0, 6).map((category) => (
+        <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+          {sourceCategories.map((category) => (
             <div key={category.id}>
-              <div className="text-xs font-medium text-light-muted dark:text-dark-muted mb-2">
+              <div className="text-xs font-medium text-light-muted dark:text-dark-muted mb-2 sticky top-0 bg-light-card dark:bg-dark-card py-1">
                 {category.icon} {category.label}
               </div>
               <div className="flex flex-wrap gap-2">
-                {category.sources.slice(0, 6).map((s) => (
+                {category.sources.map((s) => (
                   <button
                     key={s.value}
                     onClick={() => { setSource(s.value); setCustomSource(''); setMedium(''); }}
@@ -227,8 +227,8 @@ export function UTMGenerator() {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-3">
-          {availableMediums.slice(0, 12).map((m) => (
+        <div className="flex flex-wrap gap-2 mb-3 max-h-[200px] overflow-y-auto">
+          {availableMediums.map((m) => (
             <button
               key={m.value}
               onClick={() => { setMedium(m.value); setCustomMedium(''); }}
@@ -277,8 +277,8 @@ export function UTMGenerator() {
           </div>
         </div>
 
-        <div className="space-y-3">
-          {campaignCategories.slice(0, 4).map((cat) => (
+        <div className="space-y-3 max-h-[350px] overflow-y-auto pr-2">
+          {campaignCategories.map((cat) => (
             <div key={cat.id}>
               <div className="text-xs font-medium text-light-muted dark:text-dark-muted mb-2">{cat.label}</div>
               <div className="flex flex-wrap gap-2">

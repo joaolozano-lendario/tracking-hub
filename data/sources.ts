@@ -38,9 +38,18 @@ export const sourceCategories: SourceCategory[] = [
       { value: 'ig-reels', label: 'IG Reels' },
       { value: 'ig-bio', label: 'Link na Bio' },
       { value: 'ig-dm', label: 'DM Instagram' },
+      { value: 'ig-threads', label: 'Threads Instagram' },
+      { value: 'ig-carrossel', label: 'Carrossel IG' },
+      { value: 'ig-video-longo', label: 'Video Longo IG' },
+      { value: 'ig-stories-link', label: 'Stories com Link' },
+      { value: 'ig-collab', label: 'Post Colaborativo' },
       { value: 'linkedin-organic', label: 'LinkedIn Orgânico' },
+      { value: 'linkedin-article', label: 'LinkedIn Article' },
+      { value: 'linkedin-newsletter', label: 'LinkedIn Newsletter' },
       { value: 'youtube-organic', label: 'YouTube Orgânico' },
       { value: 'youtube-desc', label: 'Descrição YouTube' },
+      { value: 'yt-shorts', label: 'YouTube Shorts' },
+      { value: 'yt-community', label: 'YouTube Community' },
       { value: 'tiktok-organic', label: 'TikTok Orgânico' },
       { value: 'twitter-organic', label: 'Twitter/X Orgânico' },
     ]
@@ -82,7 +91,8 @@ export const sourceCategories: SourceCategory[] = [
     sources: [
       { value: 'seo', label: 'Busca Orgânica' },
       { value: 'blog', label: 'Blog' },
-      { value: 'podcast', label: 'Podcast' },
+      { value: 'podcast', label: 'Podcast Lendário' },
+      { value: 'ps', label: 'Pronto Socorro (PS)' },
       { value: 'guest-post', label: 'Guest Post' },
     ]
   },
@@ -120,14 +130,41 @@ export const sourceCategories: SourceCategory[] = [
   },
   {
     id: 'time',
-    label: 'Time Ads',
+    label: 'Especialistas',
     icon: '👤',
     sources: [
+      { value: 'alan', label: 'Alan (@oalanicolas)' },
       { value: 'jose', label: 'José' },
       { value: 'fran', label: 'Fran' },
       { value: 'charao', label: 'Charão' },
       { value: 'marcondes', label: 'Marcondes' },
-      { value: 'alan', label: 'Alan' },
+      { value: 'day', label: 'Day' },
+    ]
+  },
+  {
+    id: 'manychat',
+    label: 'ManyChat/Instagram',
+    icon: '🤖',
+    sources: [
+      { value: 'mc-ig', label: 'ManyChat Instagram' },
+      { value: 'mc-dm', label: 'DM Trigger' },
+      { value: 'mc-stories', label: 'Stories Reply' },
+      { value: 'mc-comment', label: 'Comment Trigger' },
+      { value: 'mc-keyword', label: 'Keyword Trigger' },
+      { value: 'mc-broadcast', label: 'Broadcast' },
+    ]
+  },
+  {
+    id: 'lives',
+    label: 'Lives do Alan',
+    icon: '🎥',
+    sources: [
+      { value: 'live-alan', label: 'Live Semanal (Quintas)' },
+      { value: 'live-imersao', label: 'Imersão IA' },
+      { value: 'live-hackathon', label: 'Hackathon' },
+      { value: 'live-workshop', label: 'Workshop' },
+      { value: 'live-qa', label: 'Q&A Session' },
+      { value: 'live-lancamento', label: 'Live de Lançamento' },
     ]
   },
 ]
@@ -172,10 +209,11 @@ export const sourceMediumMap: Record<string, string[]> = {
   influencer: ['social', 'video', 'stories'],
   parceiro: ['referral'],
 
-  // SEO
+  // SEO/Conteúdo
   seo: ['seo', 'organic'],
   blog: ['organic', 'seo'],
   podcast: ['organic'],
+  ps: ['live-chat', 'live'],
   'guest-post': ['organic', 'referral'],
 
   // Offline
@@ -195,12 +233,40 @@ export const sourceMediumMap: Record<string, string[]> = {
   crosssell: ['crosssell', 'email', 'nurture'],
   internal: ['internal'],
 
-  // Time
-  jose: ['cpc', 'cpm', 'feed', 'stories', 'video'],
-  fran: ['cpc', 'cpm', 'feed', 'stories', 'video'],
-  charao: ['cpc', 'cpm', 'feed', 'stories', 'video'],
-  marcondes: ['cpc', 'cpm', 'feed', 'stories', 'video'],
-  alan: ['organic', 'video', 'live'],
+  // Especialistas
+  alan: ['feed', 'stories', 'reels', 'video', 'live', 'organic'],
+  jose: ['cpc', 'cpm', 'feed', 'stories', 'reels', 'video'],
+  fran: ['cpc', 'cpm', 'feed', 'stories', 'reels', 'video'],
+  charao: ['cpc', 'cpm', 'feed', 'stories', 'reels', 'video'],
+  marcondes: ['cpc', 'cpm', 'feed', 'stories', 'reels', 'video'],
+  day: ['feed', 'stories', 'reels', 'video', 'organic'],
+
+  // ManyChat
+  'mc-ig': ['dm-trigger', 'stories-reply', 'comment-trigger', 'keyword-trigger', 'fluxo', 'mc-broadcast'],
+  'mc-dm': ['dm-trigger', 'fluxo'],
+  'mc-stories': ['stories-reply', 'fluxo'],
+  'mc-comment': ['comment-trigger', 'fluxo'],
+  'mc-keyword': ['keyword-trigger', 'fluxo'],
+  'mc-broadcast': ['mc-broadcast', 'fluxo'],
+
+  // Lives
+  'live-alan': ['live-chat', 'live-qrcode', 'live-pinned', 'live-descricao', 'live-oferta', 'live'],
+  'live-imersao': ['live-chat', 'live-qrcode', 'live-pinned', 'live-oferta', 'live'],
+  'live-hackathon': ['live-chat', 'live-qrcode', 'live-pinned', 'live'],
+  'live-workshop': ['live-chat', 'live-qrcode', 'live-pinned', 'live-oferta', 'live'],
+  'live-qa': ['live-chat', 'live-pinned', 'live'],
+  'live-lancamento': ['live-chat', 'live-qrcode', 'live-pinned', 'live-oferta', 'live'],
+
+  // Orgânico expandido
+  'ig-threads': ['thread', 'organic'],
+  'ig-carrossel': ['carrossel-edu', 'carousel', 'organic'],
+  'ig-video-longo': ['video-longo', 'video', 'organic'],
+  'ig-stories-link': ['stories', 'organic'],
+  'ig-collab': ['feed', 'organic'],
+  'yt-shorts': ['video', 'organic'],
+  'yt-community': ['organic'],
+  'linkedin-article': ['article', 'organic'],
+  'linkedin-newsletter': ['newsletter', 'organic'],
 }
 
 // Helper to get all sources flat
