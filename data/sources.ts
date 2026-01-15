@@ -24,8 +24,6 @@ export const sourceCategories: SourceCategory[] = [
       { value: 'tiktok', label: 'TikTok Ads' },
       { value: 'linkedin', label: 'LinkedIn Ads' },
       { value: 'twitter', label: 'Twitter/X Ads' },
-      { value: 'taboola', label: 'Taboola' },
-      { value: 'outbrain', label: 'Outbrain' },
     ]
   },
   {
@@ -179,8 +177,6 @@ export const sourceMediumMap: Record<string, string[]> = {
   tiktok: ['cpc', 'cpm', 'video', 'feed'],
   linkedin: ['cpc', 'cpm', 'feed', 'sponsored'],
   twitter: ['cpc', 'cpm', 'feed'],
-  taboola: ['cpc', 'native'],
-  outbrain: ['cpc', 'native'],
 
   // Organic social
   'ig-organic': ['organic', 'feed', 'stories', 'reels'],

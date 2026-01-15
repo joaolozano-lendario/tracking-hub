@@ -60,6 +60,27 @@ export const mediums: MediumOption[] = [
   { value: 'internal', label: 'Internal', description: 'Link interno', category: 'outro' },
   { value: 'offline', label: 'Offline', description: 'Evento offline', category: 'outro' },
   { value: 'presencial', label: 'Presencial', description: 'Evento presencial', category: 'outro' },
+
+  // ManyChat
+  { value: 'stories-reply', label: 'Stories Reply', description: 'Resposta via stories', category: 'mensagem' },
+  { value: 'dm-trigger', label: 'DM Trigger', description: 'Mensagem direta que aciona fluxo', category: 'mensagem' },
+  { value: 'comment-trigger', label: 'Comment Trigger', description: 'Comentário que aciona fluxo', category: 'mensagem' },
+  { value: 'keyword-trigger', label: 'Keyword Trigger', description: 'Palavra-chave que aciona fluxo', category: 'mensagem' },
+  { value: 'mc-broadcast', label: 'MC Broadcast', description: 'Broadcast ManyChat', category: 'mensagem' },
+
+  // Lives
+  { value: 'live-chat', label: 'Chat da Live', description: 'Link no chat da live', category: 'formato' },
+  { value: 'live-qrcode', label: 'QR Code Live', description: 'QR code exibido na tela', category: 'formato' },
+  { value: 'live-pinned', label: 'Comentário Fixado', description: 'Link no comentário fixado', category: 'formato' },
+  { value: 'live-descricao', label: 'Descrição Live', description: 'Link na descrição da live', category: 'formato' },
+  { value: 'live-oferta', label: 'Oferta ao Vivo', description: 'CTA de oferta durante live', category: 'formato' },
+
+  // Orgânico expandido
+  { value: 'thread', label: 'Thread', description: 'Thread no Threads/X', category: 'formato' },
+  { value: 'carrossel-edu', label: 'Carrossel Educativo', description: 'Carrossel com conteúdo', category: 'formato' },
+  { value: 'video-longo', label: 'Video Longo', description: 'Video +3min', category: 'formato' },
+  { value: 'article', label: 'Artigo', description: 'Artigo LinkedIn/Medium', category: 'organico' },
+  { value: 'newsletter', label: 'Newsletter', description: 'Newsletter orgânica', category: 'organico' },
 ]
 
 export function getMedium(value: string): MediumOption | undefined {

@@ -21,15 +21,20 @@ function LogoDiamante({ className = "w-6 h-6" }: { className?: string }) {
   )
 }
 
-const navItems = [
+// Ferramentas principais (destacadas)
+const mainTools = [
   { href: '/', label: 'Gerador', icon: '🔗', mobileLabel: '🔗' },
-  { href: '/sobre', label: 'O que é?', icon: '📖', mobileLabel: '📖' },
   { href: '/audit', label: 'Audit', icon: '🔍', mobileLabel: '🔍' },
   { href: '/encurtador', label: 'Encurtador', icon: '✂️', mobileLabel: '✂️' },
+]
+
+// Outras páginas
+const secondaryItems = [
   { href: '/overview', label: 'Iscas', icon: '📊', mobileLabel: '📊' },
   { href: '/tags', label: 'Tags', icon: '🏷️', mobileLabel: '🏷️' },
   { href: '/listas', label: 'Listas', icon: '📋', mobileLabel: '📋' },
   { href: '/links', label: 'Histórico', icon: '⚡', mobileLabel: '⚡' },
+  { href: '/sobre', label: 'Sobre', icon: '📖', mobileLabel: '📖' },
 ]
 
 export function Navigation() {
@@ -47,13 +52,38 @@ export function Navigation() {
 
           {/* Nav items */}
           <nav className="flex items-center gap-1">
-            {navItems.map((item) => {
+            {/* Ferramentas principais - destacadas */}
+            <div className="flex items-center gap-1 px-2 py-1 rounded-lg bg-accent/10 border border-accent/20">
+              {mainTools.map((item) => {
+                const isActive = pathname === item.href
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors
+                      ${isActive
+                        ? 'bg-accent text-accent-contrast'
+                        : 'text-light-text dark:text-dark-text hover:bg-accent/20'
+                      }`}
+                  >
+                    <span className="sm:hidden text-lg">{item.mobileLabel}</span>
+                    <span className="hidden sm:inline">{item.icon} {item.label}</span>
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* Separador */}
+            <div className="hidden sm:block w-px h-6 bg-light-border dark:bg-dark-border mx-2" />
+
+            {/* Itens secundários */}
+            {secondaryItems.map((item) => {
               const isActive = pathname === item.href
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors
+                  className={`px-2 py-1.5 rounded-lg text-sm transition-colors
                     ${isActive
                       ? 'bg-light-text/10 dark:bg-dark-text/10 text-light-text dark:text-dark-text'
                       : 'text-light-muted dark:text-dark-muted hover:text-light-text dark:hover:text-dark-text hover:bg-light-card dark:hover:bg-dark-card'
